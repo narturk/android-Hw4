@@ -25,23 +25,6 @@ public class listActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         noteList = new ArrayList<Note>();
-//        noteList.add(new Note(1, "hello1", "world1", "send","11/06/2019"));
-//        noteList.add(new Note(2, "hello2", "world2", "send","11/06/2019"));
-//        noteList.add(new Note(3, "hello3", "world3", "send","11/06/2019"));
-//        noteList.add(new Note(4, "hello4", "world4", "send","11/06/2019"));
-//        noteList.add(new Note(5, "hello5", "world5", "send","11/06/2019"));
-//        noteList.add(new Note(6, "hello6", "world6", "send","11/06/2019"));
-//        noteList.add(new Note(7, "hello7", "world7", "send","11/06/2019"));
-//        noteList.add(new Note(8, "hello8", "world8", "send","11/06/2019"));
-//        noteList.add(new Note(9, "hello9", "world9", "send","11/06/2019"));
-//        noteList.add(new Note(10, "hello10", "world10", "send","11/06/2019"));
-//        noteList.add(new Note(11, "hello11", "world11", "send","11/06/2019"));
-//        noteList.add(new Note(12, "hello12", "world12", "send","11/06/2019"));
-//        noteList.add(new Note(13, "hello13", "world13", "send","11/06/2019"));
-//        noteList.add(new Note(14, "hello14", "world14", "send","11/06/2019"));
-//        noteList.add(new Note(15, "hello15", "world15", "send","11/06/2019"));
-
-
         dbHelper = DBHelper.getHelper(this);
         Cursor ret = dbHelper.getAllData();
 
@@ -76,6 +59,7 @@ public class listActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(view.getContext(), EditNote.class);
                 intent1.putExtra("index", position);
                 startActivityForResult(intent1, position);
+                finishActivity(1);
             }
         });
         btn = findViewById(R.id.AddNote);
@@ -84,6 +68,7 @@ public class listActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent2 = new Intent(v.getContext(), AddNote.class);
                 startActivity(intent2);
+                finishActivity(1);
             }
         });
     }

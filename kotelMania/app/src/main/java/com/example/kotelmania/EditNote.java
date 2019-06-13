@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EditNote extends AppCompatActivity {
 
@@ -18,6 +21,11 @@ public class EditNote extends AppCompatActivity {
     public TextView content_tv;
     public Button btn1;
     public Button btn2;
+    private int id=0;
+    private String title="";
+    private String content="";
+    private String status="";
+    private String date="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +38,7 @@ public class EditNote extends AppCompatActivity {
         dbHelper = DBHelper.getHelper(this);
         Cursor ret = dbHelper.getAllData();
 
-        int id=0;
-        String title="";
-        String content="";
-        String status="";
-        String date="";
+
         String[] columns = ret.getColumnNames();
         while (ret.moveToNext()){
             if(Integer.parseInt(ret.getString(0)) == index+1 ) {
@@ -66,13 +70,24 @@ public class EditNote extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                title = title_tv.getText().toString();
+                content = content_tv.getText().toString();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = new Date();
+                String dateToSend = dateFormat.format(date);
+                dbHelper.updateData(id, title, content, status, dateToSend);
+                Intent intent1 = new Intent(v.getContext(), listActivity.class);
+                startActivity(intent1);
+                finishActivity(1);
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent2 = new Intent(v.getContext(), listActivity.class);
+                startActivity(intent2);
+                finishActivity(1);
             }
         });
     }
