@@ -18,7 +18,7 @@ public class listActivity extends AppCompatActivity {
     public ListView lst;
     public DBHelper dbHelper;
     private ArrayList<Note> noteList;
-    Button btn;
+    Button btn, btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +68,15 @@ public class listActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent2 = new Intent(v.getContext(), AddNote.class);
                 startActivity(intent2);
+                finishActivity(1);
+            }
+        });
+        btn2 = findViewById(R.id.Donate);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(v.getContext(), DonateActivity.class);
+                startActivity(intent3);
                 finishActivity(1);
             }
         });
