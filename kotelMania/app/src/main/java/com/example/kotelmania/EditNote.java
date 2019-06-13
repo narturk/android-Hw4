@@ -1,0 +1,79 @@
+package com.example.kotelmania;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+public class EditNote extends AppCompatActivity {
+
+    public DBHelper dbHelper;
+    public TextView title_tv;
+    public TextView content_tv;
+    public Button btn1;
+    public Button btn2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_note);
+
+        Intent intent = getIntent();
+        int index = intent.getIntExtra("index", 0);
+
+        dbHelper = DBHelper.getHelper(this);
+        Cursor ret = dbHelper.getAllData();
+
+        int id=0;
+        String title="";
+        String content="";
+        String status="";
+        String date="";
+        String[] columns = ret.getColumnNames();
+        while (ret.moveToNext()){
+            if(Integer.parseInt(ret.getString(0)) == index+1 ) {
+                for (int i = 0; i < columns.length; i++) {
+                    switch (i) {
+                        case 0:
+                            id = Integer.parseInt(ret.getString(i));
+                        case 1:
+                            title = ret.getString(i);
+                        case 2:
+                            content = ret.getString(i);
+                        case 3:
+                            status = ret.getString(i);
+                        case 4:
+                            date = ret.getString(i);
+                    }
+                }
+            }
+        }
+
+        title_tv = (TextView) findViewById(R.id.edit_NoteTitle);
+        content_tv = (TextView) findViewById(R.id.edit_NoteText);
+        btn1 = (Button) findViewById(R.id.edit_AddNote);
+        btn2 = (Button) findViewById(R.id.edit_return);
+
+        title_tv.setText(title);
+        content_tv.setText(content);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+    }
+}

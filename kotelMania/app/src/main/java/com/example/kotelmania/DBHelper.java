@@ -7,12 +7,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
+    private static DBHelper instance = null;
     private static final int DATABASE_VERSION = 1;
-
     private static final String CREATE_NOTES_TABLE_QUERY =
-            new StringBuilder().append("CREATE_TABLE").append(Note.TABLE_NAME).append(" (").append(Note.COLUMN_ID).append(" INTEGER,").append(Note.COLUMN_TITLE).append(" TEXT,").append(Note.COLUMN_CONTENT).append(" TEXT,").append(Note.COLUMN_STATUS).append(" TEXT,").append(Note.COLUMN_DATE).append(" TEXT);").toString();
+            new StringBuilder().append("CREATE TABLE ").append(Note.TABLE_NAME).append(" (").append(Note.COLUMN_ID).append(" INTEGER,").append(Note.COLUMN_TITLE).append(" TEXT,").append(Note.COLUMN_CONTENT).append(" TEXT,").append(Note.COLUMN_STATUS).append(" TEXT,").append(Note.COLUMN_DATE).append(" TEXT);").toString();
 
-    public DBHelper(Context context) {
+    public static synchronized DBHelper getHelper(Context context)
+    {
+        if (instance == null)
+            instance = new DBHelper(context);
+
+        return instance;
+    }
+
+    private DBHelper(Context context) {
         super(context, "db", null, DATABASE_VERSION);
     }
 
@@ -45,6 +53,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+Note.TABLE_NAME,null);
+        return res;
+    }
+
+    public Cursor getIndexRow(int index){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+Note.TABLE_NAME+" where "+Note.COLUMN_ID+"='"+index+"'",null);
         return res;
     }
 

@@ -23,4 +23,20 @@ public class Note {
     public static final String COLUMN_CONTENT = "content";
     public static final String COLUMN_STATUS = "status";
     public static final String COLUMN_DATE = "date";
+
+    public int getID(){
+        return ID;
+    }
+    public String getTitle(){
+        return title;
+    }
+    public String getContent(){
+        return content;
+    }
+    public String getStatus(){
+        return status;
+    }
+    public String getDate(){
+        return date;
+    }
 }
