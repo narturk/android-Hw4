@@ -41,7 +41,8 @@ public class EditNote extends AppCompatActivity {
 
         String[] columns = ret.getColumnNames();
         while (ret.moveToNext()){
-            if(Integer.parseInt(ret.getString(0)) == index+1 ) {
+            Log.d(null, "onCreate: db index="+ret.getString(0));
+            if(ret.getInt(0) == index+1 ) {
                 for (int i = 0; i < columns.length; i++) {
                     switch (i) {
                         case 0:
@@ -58,6 +59,10 @@ public class EditNote extends AppCompatActivity {
                 }
             }
         }
+
+        Log.d(null, "onCreate: index="+index+" dbIndex="+id);
+        Log.d(null, "onCreate: title="+title);
+        Log.d(null, "onCreate: note="+content);
 
         title_tv = (TextView) findViewById(R.id.edit_NoteTitle);
         content_tv = (TextView) findViewById(R.id.edit_NoteText);

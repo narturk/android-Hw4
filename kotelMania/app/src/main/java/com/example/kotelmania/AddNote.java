@@ -15,9 +15,9 @@ import java.util.Date;
 
 public class AddNote extends AppCompatActivity{
     public Button btn;
-    private EditText title;
-    private EditText note;
-    private static int id = 1;
+    public EditText title;
+    public EditText note;
+    public static int id = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +43,7 @@ public class AddNote extends AppCompatActivity{
         String stat = "Send";
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
-        String dateToSend = dateFormat.format(date).toString();
+        String dateToSend = dateFormat.format(date);
 
         DBHelper dbHelper = DBHelper.getHelper(this);
         dbHelper.insertData(noteId, title, note, stat, dateToSend);

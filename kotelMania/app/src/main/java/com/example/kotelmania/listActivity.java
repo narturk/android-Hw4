@@ -11,7 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class listActivity extends AppCompatActivity {
 
@@ -28,6 +31,7 @@ public class listActivity extends AppCompatActivity {
         dbHelper = DBHelper.getHelper(this);
         Cursor ret = dbHelper.getAllData();
 
+        checkDate();
         while(ret.moveToNext()){
             String[] columns = ret.getColumnNames();
 
@@ -80,5 +84,23 @@ public class listActivity extends AppCompatActivity {
                 finishActivity(1);
             }
         });
+    }
+
+    public void checkDate(){
+        Cursor cur = dbHelper.getAllData();
+
+        DateFormat dateFormat = new SimpleDateFormat("dd");
+        Date day = new Date();
+        String DateToCheck = dateFormat.format(day);
+
+        while(cur.moveToNext()){
+            String str  = cur.getString(4);
+            String[] array = str.split("/");
+            if(Integer.parseInt(array[0])+2 <= Integer.parseInt(DateToCheck)){
+                dbHelper.updateData(cur.getInt(0), cur.getString(1), cur.getString(2), "received",cur.getString(4));
+            }
+        }
+
+
     }
 }

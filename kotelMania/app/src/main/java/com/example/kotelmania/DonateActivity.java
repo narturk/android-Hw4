@@ -51,6 +51,9 @@ public class DonateActivity extends AppCompatActivity {
                 editor.commit();
                 textview.setText(String.valueOf(sum));
                 Toast.makeText(DonateActivity.this, "Bless You", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), listActivity.class);
+                startActivity(intent);
+                finishActivity(1);
             }
         });
     }
