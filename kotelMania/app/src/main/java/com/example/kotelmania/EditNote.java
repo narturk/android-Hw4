@@ -46,7 +46,7 @@ public class EditNote extends AppCompatActivity {
                 for (int i = 0; i < columns.length; i++) {
                     switch (i) {
                         case 0:
-                            id = Integer.parseInt(ret.getString(i));
+                            id =ret.getInt(i);
                         case 1:
                             title = ret.getString(i);
                         case 2:
