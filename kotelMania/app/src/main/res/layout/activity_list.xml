@@ -9,21 +9,21 @@
 
     <Button
         android:id="@+id/AddNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add note"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/button_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/Donate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="donate"
+        android:layout_width="140dp"
+        android:layout_height="64dp"
+        android:background="@drawable/donate_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

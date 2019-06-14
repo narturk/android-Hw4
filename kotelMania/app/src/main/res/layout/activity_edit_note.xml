@@ -39,32 +39,29 @@
 
     <Button
         android:id="@+id/edit_AddNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/edit_return"
-        app:layout_constraintHorizontal_bias="0.694"
+        android:layout_marginStart="328dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/save_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/edit_return"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginEnd="328dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/return_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="return"/>
+        app:layout_constraintVertical_bias="0.012" />
 
 </android.support.constraint.ConstraintLayout>

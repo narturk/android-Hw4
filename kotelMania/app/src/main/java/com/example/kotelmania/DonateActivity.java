@@ -50,6 +50,7 @@ public class DonateActivity extends AppCompatActivity {
                 editor.putInt("SUM", sum);
                 editor.commit();
                 textview.setText(String.valueOf(sum));
+                Toast.makeText(DonateActivity.this, "Bless You", Toast.LENGTH_SHORT).show();
             }
         });
     }
